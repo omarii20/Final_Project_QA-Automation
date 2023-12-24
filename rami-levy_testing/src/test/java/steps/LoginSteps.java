@@ -35,6 +35,7 @@ public class LoginSteps {
         this.ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(driver);
         loginPage.login(username,password);
+        propertiesWraper.setProprieties("token",loginPage.getToken());
     }
 
     @Then("validate i am loged in with {string} user")

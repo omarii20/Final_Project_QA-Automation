@@ -2,8 +2,10 @@ package logic;
 
 import infrastructre.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import static utils.Utils.extractTokenFromJson;
+import static utils.Utils.myWait;
 
 public class LoginPage extends BasePage {
 
@@ -17,13 +19,17 @@ public class LoginPage extends BasePage {
     public void login(String user, String password) {
         getDriver().findElement(userInput).sendKeys(user);
         getDriver().findElement(passwordInput).sendKeys(password);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        myWait(3000);
         getDriver().findElement(loginButton).click();
 
+    }
+
+    public String getToken() {
+        myWait(5000);
+        JavascriptExecutor js = (JavascriptExecutor) super.getDriver();
+        String localstorage = (String) js.executeScript("return localStorage.getItem('ramilevy');");
+        String accessToken=extractTokenFromJson(localstorage);
+        return accessToken;
 
     }
 

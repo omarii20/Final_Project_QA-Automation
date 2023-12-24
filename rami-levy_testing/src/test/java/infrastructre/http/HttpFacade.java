@@ -20,8 +20,11 @@ public class HttpFacade {
             connection.setRequestMethod(request.getMethod().toString());
 
             // Set additional headers if needed
-            connection.setRequestProperty("Content-Type", "application/json");
-            // connection.setRequestProperty("HeaderName", "HeaderValue");
+            if(!request.getHeaders().isEmpty()){
+                for(String header:request.getHeaders().keySet()){
+                    connection.setRequestProperty(header,request.getHeaders().get(header));
+                }
+            }
 
             // Handle request body
             if (request.getBody() != null && !request.getBody().isEmpty()) {

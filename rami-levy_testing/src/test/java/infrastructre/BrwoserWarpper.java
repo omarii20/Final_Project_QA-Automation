@@ -1,6 +1,6 @@
 package infrastructre;
 
-import infrastructure.enums.Browser;
+import infrastructre.enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;

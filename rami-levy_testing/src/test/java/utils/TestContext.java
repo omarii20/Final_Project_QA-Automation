@@ -18,4 +18,8 @@ public class TestContext {
             return (T)o;
         }
     }
+
+    public void clear() {
+        context=new HashMap<>();
+    }
 }

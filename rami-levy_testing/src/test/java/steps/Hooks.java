@@ -6,6 +6,7 @@ import infrastructre.enums.Browser;
 import io.cucumber.java.*;
 import logic.LoginPage;
 import logic.RamiLeviHomePage;
+import org.openqa.selenium.WebElement;
 import utils.TestContext;
 
 public class Hooks {
@@ -18,9 +19,11 @@ public class Hooks {
     PropertiesWrapper propertiesWraper;
 
     public Hooks(TestContext testContext){
+        propertiesWraper=new PropertiesWrapper();
+        this.browserwraber= new BrwoserWarpper(propertiesWraper.getProperties("driverpath"), Browser.CHROME);
         this.browserwraber= new BrwoserWarpper("chromedriver.exe", Browser.CHROME);
         this.testContext = testContext;
-        propertiesWraper=new PropertiesWrapper();
+
     }
 
     @BeforeAll
@@ -42,23 +45,26 @@ public class Hooks {
 
         browserwraber.getDriver().get(propertiesWraper.getProperties("URL"));
         RamiLeviHomePage ramiLeviHomePage=new RamiLeviHomePage(browserwraber.getDriver());
+        testContext.put("homepage",ramiLeviHomePage);
         ramiLeviHomePage.maxpage();
+        testContext.put("homepage",ramiLeviHomePage);
+
         ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(browserwraber.getDriver());
         loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));
         //testContext.put("token",loginPage.getToken());
-        testContext.put("homepage",ramiLeviHomePage);
         propertiesWraper.setProprieties("token",loginPage.getToken());
+
+
 
     }
 
     @After
     public void afterEachTest(Scenario scenario) {
         testContext.clear();
-       browserwraber.closeDriver();
+        browserwraber.closeDriver();
+
     }
-
-
 
 
 }

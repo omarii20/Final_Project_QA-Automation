@@ -43,22 +43,23 @@ public class Hooks {
         browserwraber.getDriver().get(propertiesWraper.getProperties("URL"));
         RamiLeviHomePage ramiLeviHomePage=new RamiLeviHomePage(browserwraber.getDriver());
         ramiLeviHomePage.maxpage();
+        testContext.put("homepage",ramiLeviHomePage);
+
         ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(browserwraber.getDriver());
         loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));
         //testContext.put("token",loginPage.getToken());
-        testContext.put("homepage",ramiLeviHomePage);
         propertiesWraper.setProprieties("token",loginPage.getToken());
+
+
 
     }
 
     @After
     public void afterEachTest(Scenario scenario) {
         testContext.clear();
-       browserwraber.closeDriver();
+        browserwraber.closeDriver();
     }
-
-
 
 
 }

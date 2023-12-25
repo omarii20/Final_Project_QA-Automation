@@ -1,7 +1,7 @@
 Feature: My test
 
-  Background:
-    Given Navigate to ramiLevy site
+#  Background:
+#    Given Navigate to ramiLevy site
 
 #  Scenario:  Go to login page
 ##    When i login with user name "shahdno2001@gmail.com" and password "shahd2001"
@@ -9,9 +9,11 @@ Feature: My test
 #    Then validate i am loged in with "baker" user
 
 
-  Scenario:  Go to login page
-#    When i login with user name "shahdno2001@gmail.com" and password "shahd2001"
-    When i add item number "373337" to the cart
+#  Scenario:  Go to login page
+##    When i login with user name "shahdno2001@gmail.com" and password "shahd2001"
+#    When i add item number "373337" to the cart
 
 
-
+Scenario:
+ When i click product my product
+  Then navigate to the product page

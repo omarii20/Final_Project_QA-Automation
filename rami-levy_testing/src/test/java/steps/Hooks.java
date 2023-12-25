@@ -55,7 +55,7 @@ public class Hooks {
     @After
     public void afterEachTest(Scenario scenario) {
         testContext.clear();
-       // browserwraber.closeDriver();
+       browserwraber.closeDriver();
     }
 
 

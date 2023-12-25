@@ -20,7 +20,6 @@ public class Hooks {
 
     public Hooks(TestContext testContext){
         propertiesWraper=new PropertiesWrapper();
-        this.browserwraber= new BrwoserWarpper(propertiesWraper.getProperties("driverpath"), Browser.CHROME);
         this.browserwraber= new BrwoserWarpper("chromedriver.exe", Browser.CHROME);
         this.testContext = testContext;
 
@@ -47,12 +46,9 @@ public class Hooks {
         RamiLeviHomePage ramiLeviHomePage=new RamiLeviHomePage(browserwraber.getDriver());
         testContext.put("homepage",ramiLeviHomePage);
         ramiLeviHomePage.maxpage();
-        testContext.put("homepage",ramiLeviHomePage);
-
         ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(browserwraber.getDriver());
         loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));
-        //testContext.put("token",loginPage.getToken());
         propertiesWraper.setProprieties("token",loginPage.getToken());
 
 

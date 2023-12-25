@@ -47,22 +47,24 @@ public class Hooks {
         RamiLeviHomePage ramiLeviHomePage=new RamiLeviHomePage(browserwraber.getDriver());
         testContext.put("homepage",ramiLeviHomePage);
         ramiLeviHomePage.maxpage();
+        testContext.put("homepage",ramiLeviHomePage);
+
         ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(browserwraber.getDriver());
         loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));
         //testContext.put("token",loginPage.getToken());
         propertiesWraper.setProprieties("token",loginPage.getToken());
 
+
+
     }
 
     @After
     public void afterEachTest(Scenario scenario) {
         testContext.clear();
-       //browserwraber.closeDriver();
+        browserwraber.closeDriver();
 
     }
-
-
 
 
 }

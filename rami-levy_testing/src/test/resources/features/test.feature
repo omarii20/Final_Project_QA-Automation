@@ -17,6 +17,16 @@ Feature: My test
 #  When i click product my product
 #  Then navigate to the product page
 
+#
+#Scenario: product page validate
+# When i click product my product
+#  Then navigate to the product page
+
+#Scenario: logout from account
+# When i press logout button
+# Then navigate to guest page
+#
+
   Scenario: Go to login page
     When i click a specific product
     Then open popup for a product
@@ -30,11 +40,13 @@ Feature: My test
  # When i press logout button
  # Then navigate to guest page
 
-# Scenario:
-#  When i click product my product
-#  Then navigate to the product page
-
 # Scenario: delete cart
 #  When i click delete cart
 #  Then validate that the cart is empty
 
+
+ Scenario: Filter Results by Category and Verify Count
+  Given I choose a fruit and vegetable feature
+  When I press the filter button
+  And I filter results by a specific category
+ Then the displayed product count should match the expect

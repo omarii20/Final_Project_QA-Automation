@@ -37,8 +37,7 @@ public class Hooks {
         browserwraber.getDriver().get(propertiesWraper.getProperties("URL"));
         RamiLeviHomePage ramiLeviHomePage=new RamiLeviHomePage(browserwraber.getDriver());
         testContext.put("homepage",ramiLeviHomePage);
-        ramiLeviHomePage.maxpage();
-        testContext.put("homepage",ramiLeviHomePage);
+        ramiLeviHomePage.maxpage(); 
         ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(browserwraber.getDriver());
         loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));

@@ -11,20 +11,21 @@ import utils.TestContext;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SearchSteps
-{
+public class SearchSteps {
     TestContext testContext;
     RamiLeviHomePage ramiLeviHomePage;
-    WebDriver driver ;
+    WebDriver driver;
     PropertiesWrapper propertiesWraper;
 
     public SearchSteps(TestContext testContext) {
-        this.testContext=testContext;
-        this.ramiLeviHomePage=testContext.get("homepage");
+        this.testContext = testContext;
+        this.ramiLeviHomePage = testContext.get("homepage");
     }
 
-    @Given("I’m on the rami levy home page")
-    public void iMOnTheRamiLevyHomePage() { }
+    @Given("I'm on the rami levy home page")
+    public void iMOnTheRamiLevyHomePage() {
+    }
+
 
     @When("I click on the search bar")
     public void iClickOnTheSearchBar() {
@@ -48,7 +49,6 @@ public class SearchSteps
     public void thereforeIGetAListOfProducts() {
         assertTrue(!ramiLeviHomePage.productList().isEmpty());
     }
-
 
 
 }

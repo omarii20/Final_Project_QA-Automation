@@ -14,12 +14,16 @@ public class RamiLeviHomePage  extends BasePage {
 
     private final String LOGIN_BUTTON = "//div[@id='login-user']";
     private final String USER_NAME_LABEL = "//*[@id=\"login-user\"]/div/div/div[2]/div";
+
+
     private final String LOGOUT_BUTTON= "//*[@id=\"login-user\"]";
     private final String LOGOUT_WORD= "//*[@id=\"login-user\"]/div[2]";
-
     private final String PRODUCT_SIDE_BAR = "//*[@id=\"main-menu-0\"]";
     private final String DELETE_CART = "//*[@id=\"remove-cart\"]";
+
+
     private WebElement deleteCart;
+
 
     private WebElement loginButton;
     private WebElement userNameLabel;

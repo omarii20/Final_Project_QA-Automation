@@ -49,6 +49,9 @@ public class Hooks {
         ramiLeviHomePage.clickLogin();
         LoginPage loginPage=new LoginPage(browserwraber.getDriver());
         loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));
+
+        testContext.put("token",loginPage.getToken());
+
         propertiesWraper.setProprieties("token",loginPage.getToken());
 
 

@@ -21,8 +21,6 @@ public class ProductPageSideBar {
     public void iClickProduct() {
         this.ramiLeviHomePage=testContext.get("homepage");
         this.ramiLeviHomePage.getProductSideBarList();
-
-
     }
     @Then("navigate to the product page")
 

@@ -41,7 +41,7 @@ public class LoginSteps {
     @Then("validate i am loged in with {string} user")
     public void validateIAmLogedInWithUser(String user) {
         Assertions.assertEquals(
-                this.ramiLeviHomePage.getLoginUserText(),user
+            this.ramiLeviHomePage.getLoginUserText(),user
         );
     }
 }

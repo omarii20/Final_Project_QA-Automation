@@ -96,7 +96,8 @@ public class RamiLeviHomePage  extends BasePage {
         WebDriverWait wait = new WebDriverWait(getDriver(), 20);
         this.logoutWord= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(LOGOUT_WORD)));;
         return (this.logoutWord.getText());
-
+    }
+    
     public String getProductBarcode(){
         this.barcodeNumber = new WebDriverWait(getDriver(), 10)
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(BARCODE_PRODUCT)));

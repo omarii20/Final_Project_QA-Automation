@@ -26,9 +26,6 @@ public class RamiLeviHomePage  extends BasePage {
     private WebElement specificProduct;
     private WebElement barcodeNumber;
     private WebElement deleteCart;
-    private WebElement loginButton;
-    private WebElement userNameLabel;
-    private WebElement productSideBar;
     private WebElement logOutButtont;
     private WebElement logoutWord;
 

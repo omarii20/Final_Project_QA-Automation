@@ -1,5 +1,4 @@
 package logic;
-
 import infrastructre.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -30,7 +29,6 @@ public class LoginPage extends BasePage {
         String localstorage = (String) js.executeScript("return localStorage.getItem('ramilevy');");
         String accessToken=extractTokenFromJson(localstorage);
         return accessToken;
-
     }
 
 }

@@ -1,20 +1,15 @@
-package steps;
-
+package test.steps;
 import infrastructre.BrwoserWarpper;
 import infrastructre.PropertiesWrapper;
 import infrastructre.enums.Browser;
 import io.cucumber.java.*;
-import logic.LoginPage;
 import logic.RamiLeviHomePage;
-import org.openqa.selenium.WebElement;
+import test.enums.Enums;
 import utils.TestContext;
-
-import java.util.Locale;
 
 public class Hooks {
     private BrwoserWarpper browserwraber;
     private TestContext testContext;
-    private Scenario scenario;
     PropertiesWrapper propertiesWraper;
 
     public Hooks(TestContext testContext){
@@ -30,19 +25,13 @@ public class Hooks {
     public static void tearDown() {}
 
     @Before
-    public void beforeEachTest(Scenario scenario) {
-        this.scenario = scenario;
+    public void beforeEachTest() {
         browserwraber.initBrowser();
-        testContext.put("driver",browserwraber.getDriver());
-        browserwraber.getDriver().get(propertiesWraper.getProperties("URL"));
+        testContext.put(Enums.driver,browserwraber.getDriver());
+        browserwraber.getDriver().get(propertiesWraper.getProperties(Enums.URL));
         RamiLeviHomePage ramiLeviHomePage=new RamiLeviHomePage(browserwraber.getDriver());
-        testContext.put("homepage",ramiLeviHomePage);
-        ramiLeviHomePage.maxpage(); 
-        ramiLeviHomePage.clickLogin();
-        LoginPage loginPage=new LoginPage(browserwraber.getDriver());
-        loginPage.login(propertiesWraper.getProperties("username"),propertiesWraper.getProperties("password"));
-        testContext.put("token",loginPage.getToken());
-        propertiesWraper.setProprieties("token",loginPage.getToken());
+        testContext.put(Enums.homepage,ramiLeviHomePage);
+        ramiLeviHomePage.maxpage();
     }
 
     @After

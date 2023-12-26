@@ -1,28 +1,23 @@
-package steps;
-
+package test.steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import logic.RamiLeviHomePage;
-import org.openqa.selenium.WebDriver;
+import test.enums.Enums;
 import utils.TestContext;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class popProductSteps {
     TestContext testContext;
-    WebDriver driver;
     RamiLeviHomePage ramiLeviHomePage;
 
     public popProductSteps(TestContext testContext) {
         this.testContext = testContext;
-        driver=testContext.get("driver");
     }
 
     @When("i click a specific product")
     public void clickingAproduct(){
-        this.ramiLeviHomePage=testContext.get("homepage");
+        this.ramiLeviHomePage=testContext.get(Enums.homepage);
         this.ramiLeviHomePage.checkProductDetails();
     }
     @Then("open popup for a product")

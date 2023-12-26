@@ -9,6 +9,8 @@ import logic.RamiLeviHomePage;
 import org.openqa.selenium.WebElement;
 import utils.TestContext;
 
+import java.util.Locale;
+
 public class Hooks {
     private BrwoserWarpper browserwraber;
     private TestContext testContext;
@@ -16,8 +18,8 @@ public class Hooks {
     PropertiesWrapper propertiesWraper;
 
     public Hooks(TestContext testContext){
-        propertiesWraper=new PropertiesWrapper();
-        this.browserwraber= new BrwoserWarpper("chromedriver.exe", Browser.CHROME);
+        propertiesWraper = new PropertiesWrapper();
+        this.browserwraber= new BrwoserWarpper(Browser.CHROME);
         this.testContext = testContext;
     }
 

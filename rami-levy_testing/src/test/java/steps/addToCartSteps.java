@@ -31,14 +31,14 @@ public class addToCartSteps {
         ramiLeviHomePage.refresh();
     }
 
-    @Then("validate that the item in the cart")
-    public void validatethattheiteminthecart() {
-        Assertions.assertTrue(ramiLeviHomePage.isCartNotEmpty());
-    }
-
-    @And("validate status code")
+    @Then("validate status code")
     public void alidatestatuscode() {
         HttpResponse httpResponse =testContext.get("response");
         Assertions.assertEquals(httpResponse.getStatus(),200);
+    }
+
+    @And("validate that the item in the cart")
+    public void validatethattheiteminthecart() {
+        Assertions.assertTrue(ramiLeviHomePage.isCartNotEmpty());
     }
 }

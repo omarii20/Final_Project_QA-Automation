@@ -1,5 +1,7 @@
 package infrastructre;
 
+import test.enums.Enums;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,12 +22,12 @@ public class PropertiesWrapper {
 
     }
 
-    public String getProperties(String key){
-        return (String)prop.get(key);
+    public String getProperties(Enums key){
+        return (String)prop.get(key.toString());
     }
 
-    public void setProprieties(String key, String value){
-        prop.setProperty(key, value);
+    public void setProprieties(Enums key, String value){
+        prop.setProperty(key.toString(), value);
         try (FileOutputStream fileOutputStream = new FileOutputStream(propPath)) {
             // Write properties to the output stream
             prop.store(fileOutputStream, "");

@@ -1,29 +1,24 @@
 package logic;
-
 import infrastructre.PropertiesWrapper;
 import infrastructre.enums.Method;
 import infrastructre.http.HttpRequest;
 import infrastructre.http.HttpResponse;
+import test.enums.Enums;
 
 import java.io.IOException;
-
 import static infrastructre.http.HttpFacade.sendHttpRequest;
 
 public class ApiRequests {
 
-
         private  String baseUrl;
-
         private PropertiesWrapper propertiesWrapper;
 
         public ApiRequests(){
             propertiesWrapper=new PropertiesWrapper();
-            baseUrl=propertiesWrapper.getProperties("BaseURL");
+            baseUrl=propertiesWrapper.getProperties(Enums.BaseURL);
         }
 
-
         public HttpResponse addToCart(String itemid){
-
                 String requestBody = String.format("""
             {
                 "store": 331,
@@ -37,7 +32,7 @@ public class ApiRequests {
             """, itemid);
 
             HttpRequest postRequest = new HttpRequest(Method.POST, baseUrl+"/v2/cart", null, requestBody);
-            postRequest.setHeader("Ecomtoken",propertiesWrapper.getProperties("token"));
+            postRequest.setHeader("Ecomtoken",propertiesWrapper.getProperties(Enums.token));
             postRequest.setHeader("Host","www.rami-levy.co.il");
             postRequest.setHeader("Content-Length","154");
             postRequest.setHeader("Content-Type", "application/json");
@@ -51,6 +46,4 @@ public class ApiRequests {
             return response;
 
         }
-
-
 }

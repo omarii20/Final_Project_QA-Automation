@@ -1,17 +1,13 @@
-package steps;
-
-import infrastructre.http.HttpResponse;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
+package test.steps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import logic.ApiRequests;
 import logic.RamiLeviHomePage;
 import org.junit.jupiter.api.Assertions;
+import test.enums.Enums;
 import utils.TestContext;
 
 public class DeleteCartSteps {
-
 
     ApiRequests apiRequests;
     TestContext testContext;
@@ -19,13 +15,7 @@ public class DeleteCartSteps {
     public DeleteCartSteps(TestContext testContext) {
         this.testContext=testContext;
         apiRequests=new ApiRequests();
-        ramiLeviHomePage=testContext.get("homepage");
-    }
-
-
-    @Given("item number {string} adde to the cart")
-    public void item_adde_to_the_cart(String itemId) {
-        HttpResponse httpResponse = apiRequests.addToCart(itemId);
+        ramiLeviHomePage=testContext.get(Enums.homepage);
     }
 
     @When("i click delete cart")
@@ -37,9 +27,4 @@ public class DeleteCartSteps {
     public void validatethattheiteminthecart() {
         Assertions.assertTrue(ramiLeviHomePage.isCartEmpty());
     }
-
-
-
-
-
 }

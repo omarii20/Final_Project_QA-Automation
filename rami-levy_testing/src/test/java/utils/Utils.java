@@ -1,5 +1,4 @@
 package utils;
-
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.JsonNode;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -37,13 +36,4 @@ public class Utils {
         String newString=s[s.length-1].substring(1,s[s.length-1].length()-1);
         return Integer.parseInt(newString);
     }
-
-
-
-
-
-
-
-
-
-    }
+}

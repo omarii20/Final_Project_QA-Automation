@@ -14,6 +14,10 @@ Feature: My test
 #    When i add item number "373337" to the cart
 
 
-Scenario:
+Scenario: product page validate
  When i click product my product
   Then navigate to the product page
+
+Scenario: logout from account
+ When i press logout button
+ Then navigate to guest page

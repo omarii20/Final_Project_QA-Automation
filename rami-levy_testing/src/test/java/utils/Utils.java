@@ -31,4 +31,19 @@ public class Utils {
             throw new RuntimeException(e);
         }
     }
-}
+
+    public static int extractNumber(String str){
+        String[] s = str.split(" ");
+        String newString=s[s.length-1].substring(1,s[s.length-1].length()-1);
+        return Integer.parseInt(newString);
+    }
+
+
+
+
+
+
+
+
+
+    }

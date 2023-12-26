@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
+import static utils.Utils.extractNumber;
 import static utils.Utils.myWait;
 
 public class RamiLeviHomePage  extends BasePage {
@@ -15,16 +16,29 @@ public class RamiLeviHomePage  extends BasePage {
     private final String LOGIN_BUTTON = "//div[@id='login-user']";
     private final String USER_NAME_LABEL = "//*[@id=\"login-user\"]/div/div/div[2]/div";
 
-
     private final String LOGOUT_BUTTON= "//*[@id=\"login-user\"]";
     private final String LOGOUT_WORD= "//*[@id=\"login-user\"]/div[2]";
     private final String PRODUCT_SIDE_BAR = "//*[@id=\"main-menu-0\"]";
     private final String DELETE_CART = "//*[@id=\"remove-cart\"]";
+    private final String SEARCH_INPUT = "//*[@id=\"destination\"]";
 
+    private final String SEARCH_BUTTON = "//*[@id=\"search\"]/div[2]/div/div[1]/div/div[2]/div/div/div[2]/div[2]/button[2]";
+
+    private final String PRODUCT_LIST = "//div[@data-v-05fdeae9 and @data-v-2fc006d5 and contains(@class,\"min-height-product\")]";
+
+    private final String FILTER_ICON = "//*[@id=\"search\"]/div/div/div[1]/div/div[1]/div/div[1]/div[3]";
+    private final String CLICK_ON_SIDE_CATEGORY_OPTION = "//input[@id=\"filter-brand-858\"]/following-sibling::*";
+    private final String ITEM_COUNT="//*[@id=\"__layout\"]/div/div[1]/div[1]/div[3]/div[3]/div/div[1]/div[2]/div/div[3]/div[5]/label";
+    private int itemCount;
+    private WebElement filterIcon ;
+
+
+    private WebElement clickOnSideCategoryOption;
 
     private WebElement deleteCart;
-
-
+    private WebElement searchInput ;
+    private WebElement searchButton;
+    private List<WebElement> productList;
     private WebElement loginButton;
     private WebElement userNameLabel;
     private WebElement productSideBar;
@@ -81,6 +95,49 @@ public class RamiLeviHomePage  extends BasePage {
         WebDriverWait wait = new WebDriverWait(getDriver(), 20);
         this.logoutWord= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(LOGOUT_WORD)));;
         return (this.logoutWord.getText());
+    }
+    public void fillSearchInput(String text)
+    {
+        this.searchInput = this.driver.findElement(By.xpath(SEARCH_INPUT));
+        this.searchInput.sendKeys(text);
+    }
+    public void clickOnSearchButton(){
+        this.searchButton = this.driver.findElement(By.xpath(SEARCH_BUTTON));
+        this.searchButton.click();
+    }
+    public List<WebElement> productList()
+    {
+        myWait(3000);
+        this.productList = getDriver().findElements(By.xpath(PRODUCT_LIST));
+        return productList;
+    }
+    public void productSideBar()
+    {
+        myWait(3000);
+        this.productSideBar = getDriver().findElement(By.xpath(PRODUCT_SIDE_BAR));
+        this.productSideBar.click();
+    }
+    public void clickOnFilterIcon()
+    {
+        this.filterIcon = this.driver.findElement(By.xpath(FILTER_ICON));
+        this.filterIcon.click();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement filter = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ITEM_COUNT)));
+        itemCount = extractNumber(filter.getText());
+    }
+    public void selectFromItemsFilter()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        this.clickOnSideCategoryOption = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(CLICK_ON_SIDE_CATEGORY_OPTION)));
+        this.clickOnSideCategoryOption.click();
+        this.filterIcon.click();
+    }
 
+    public boolean countProducts() {
+        List<WebElement> list=productList();
+        if(list.size()==itemCount){
+            return true;
+        }
+        return false;
     }
 }

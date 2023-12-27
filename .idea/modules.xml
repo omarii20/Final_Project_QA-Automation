@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Final_Project_QA-Automation.iml" filepath="$PROJECT_DIR$/.idea/Final_Project_QA-Automation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rami-levy_testing/rami-levy_testing.iml" filepath="$PROJECT_DIR$/rami-levy_testing/rami-levy_testing.iml" />
     </modules>
   </component>
 </project>

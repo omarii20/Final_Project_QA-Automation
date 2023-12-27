@@ -128,7 +128,8 @@ public class RamiLeviHomePage  extends BasePage {
 
     public void clickOnFilterIcon()
     {
-        this.filterIcon = this.driver.findElement(By.xpath(FILTER_ICON));
+        this.filterIcon=this.driver.findElement(By.xpath(FILTER_ICON));
+        wait.until(ExpectedConditions.not(ExpectedConditions.attributeContains(filterIcon, "class", "pointer-none")));
         this.filterIcon.click();
         WebElement filter = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ITEM_COUNT)));
         itemCount = extractNumber(filter.getText());

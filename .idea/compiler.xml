@@ -9,8 +9,5 @@
         <module name="rami-levy_testing" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="rami-levy_testing" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>

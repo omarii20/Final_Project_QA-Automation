@@ -16,18 +16,18 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String user, String password) {
-        getDriver().findElement(userInput).sendKeys(user);
-        getDriver().findElement(passwordInput).sendKeys(password);
+        this.driver.findElement(userInput).sendKeys(user);
+        this.driver.findElement(passwordInput).sendKeys(password);
         myWait(3000);
-        getDriver().findElement(loginButton).click();
-
+        this.driver.findElement(loginButton).click();
+        myWait(5000);
     }
 
     public String getToken() {
         myWait(5000);
-        JavascriptExecutor js = (JavascriptExecutor) super.getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) super.driver;
         String localstorage = (String) js.executeScript("return localStorage.getItem('ramilevy');");
-        String accessToken=extractTokenFromJson(localstorage);
+        String accessToken = extractTokenFromJson(localstorage);
         return accessToken;
     }
 

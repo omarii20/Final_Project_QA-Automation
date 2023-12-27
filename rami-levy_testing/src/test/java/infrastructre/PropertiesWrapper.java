@@ -1,7 +1,5 @@
 package infrastructre;
-
 import test.enums.Enums;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,7 +17,6 @@ public class PropertiesWrapper {
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
 
     public String getProperties(Enums key){
@@ -34,7 +31,5 @@ public class PropertiesWrapper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
 }

@@ -1,11 +1,9 @@
 package infrastructre;
-
 import infrastructre.enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.util.Locale;
 
 public class BrwoserWarpper {
@@ -49,7 +47,7 @@ public class BrwoserWarpper {
                 driver = new ChromeDriver();
                 break;
             case EDGE:
-                 driver = new EdgeDriver();
+                driver = new EdgeDriver();
                 break;
             case FIREFOX:
                 driver = new FirefoxDriver();
@@ -66,6 +64,6 @@ public class BrwoserWarpper {
     }
 
     public void setDriver(WebDriver driver) {
-        this.driver = driver;
+        BrwoserWarpper.driver = driver;
     }
 }
